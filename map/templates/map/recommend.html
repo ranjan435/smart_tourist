@@ -13,7 +13,7 @@
         {% if places %}
         {% for place in places %}
             <div class="col-sm-3 col-md-2 mb-2">
-                <div class="card" style="border-radius: 22px 22px 22px 22px;">
+                <div class="card place-list" style="border-radius: 22px 22px 22px 22px;">
                     <img src="{{ place.photo.url}}" class="card-img-top img-responsive" style="border-radius: 22px 22px 22px 22px;" width="300px" height="200px">                   
                     <div class="card-body">
                         <h5 class="card-title ">{{place.name}}</h5>
