@@ -37,7 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     'tourist',
+    'map',
+    'leaflet',
+    'location_field.apps.DefaultConfig',
+    'djgeojson',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +60,7 @@ ROOT_URLCONF = 'smarttourist.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,7 +81,7 @@ WSGI_APPLICATION = 'smarttourist.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'smarttourist',
         'USER': 'touristdbuser',
         'PASSWORD': 'password',
@@ -133,3 +138,30 @@ AUTH_USER_MODEL = 'tourist.User'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS=(
+    os.path.join(BASE_DIR, 'static'),    
+)
+
+LEAFLET_CONFIG={
+    'DEFAULT_CENTER':(27.6828417,85.3178166),
+    'DEFAULT_ZOOM': 16,
+    'MIN_ZOOM':3,
+    'MAX_ZOOM':18,
+    'RESET_VIEW': False
+}
+
+# for django-location-field
+LOCATION_FIELD_PATH = STATIC_URL + 'location_field'
+LOCATION_FIELD = {
+    'map.provider': 'mapbox',
+    'provider.mapbox.access_token': 'pk.eyJ1IjoicmFuamFuNDM1IiwiYSI6ImNrNWIzdnNqeTE2ZjgzZG82OG40aG82ejcifQ.nrFTVyOERu6YhgS66Gxr8A',
+    'provider.mapbox.max_zoom': 18,
+    'provider.mapbox.id': 'mapbox.streets',
+}
+# LOCATION_FIELD = {
+#     'provider.openstreetmap.max_zoom': 18,
+# }
+
+
