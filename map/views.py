@@ -7,7 +7,7 @@ from django.db.models import Q
 # Create your views here.
 def index(request):
     return render(request, 'map/home.html',{
-        'places': Place.objects.all()
+        'places': Place.objects.all()[:20]
     })
 
 def recommend(request):
