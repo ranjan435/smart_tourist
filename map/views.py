@@ -6,7 +6,7 @@ from django.db.models import Q
 
 # Create your views here.
 def index(request):
-    return render(request, 'map/hy.html',{
+    return render(request, 'map/home.html',{
         'places': Place.objects.all()
     })
 

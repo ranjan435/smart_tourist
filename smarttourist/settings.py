@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'leaflet',
     'location_field.apps.DefaultConfig',
     'djgeojson',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -163,5 +164,7 @@ LOCATION_FIELD = {
 # LOCATION_FIELD = {
 #     'provider.openstreetmap.max_zoom': 18,
 # }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 

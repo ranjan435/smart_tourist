@@ -1,8 +1,12 @@
 {% extends 'map/base.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
 <form action="" method="post">
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" class="btn btn-primary" value="Submit">
+    <div class="container p-2">
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-primary mt-2" value="Search">
+    </div>
 </form>
 {% endblock %}
