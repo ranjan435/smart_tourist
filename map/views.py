@@ -23,6 +23,7 @@ def detail(request, place_id):
     return render(request, 'map/detail.html', context)
 
 def search_recommend(request):
+    places = Place.objects.all()
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
@@ -33,5 +34,5 @@ def search_recommend(request):
             })
     else:
         form = SearchForm()
-    return render(request, 'map/search.html', {'form': form})
+    return render(request, 'map/search.html', {'form': form,'places':places})
         

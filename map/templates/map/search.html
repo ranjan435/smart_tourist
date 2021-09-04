@@ -1,5 +1,6 @@
 {% extends 'map/base.html' %}
 {% load crispy_forms_tags %}
+{% crispy searchform searchform.helper %}
 
 {% block content %}
 <form action="" method="post">
@@ -9,4 +10,17 @@
         <input type="submit" class="btn btn-primary mt-2" value="Search">
     </div>
 </form>
+
+<script>
+    $( function() {
+      var availableNames = [
+          {% for place in places %}
+              "{{place.name}}",
+          {% endfor %}
+      ];
+      $( "#id_search" ).autocomplete({
+        source: availableNames
+      });
+    } );
+    </script>
 {% endblock %}
